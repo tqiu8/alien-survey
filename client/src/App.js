@@ -378,6 +378,9 @@ class App extends Component {
               the sun is falling somewhere, and at the very end, from this seismic indecision arises what has been here all along. 
               </h2>
           </div>
+          <div style={{ float:"left", clear: "both" }}
+             ref={(el) => { this.messagesEnd = el; }}>
+          </div>
         </div>
 
       )
