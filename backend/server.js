@@ -99,9 +99,11 @@ if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) =>
     res.sendFile(path.resolve("../client/build", "index.html"))
   );
+
+  // append /api for our http requests
+  app.use("/api", router);
 }
-// append /api for our http requests
-app.use("/api", router);
+
 
 // launch our backend into a port
 app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
