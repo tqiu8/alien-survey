@@ -94,10 +94,10 @@ router.post("/putData", (req, res) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("build"));
+  app.use(express.static("../client/build"));
 
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve("build", "index.html"))
+    res.sendFile(path.resolve("../client/build", "index.html"))
   );
 }
 // append /api for our http requests
