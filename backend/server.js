@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const Data = require("./data");
 const path = require("path");
+const morgan = require('morgan');
 
 const API_PORT = 3001;
 const app = express();
@@ -93,16 +94,10 @@ router.post("/putData", (req, res) => {
   });
 });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../client/build"));
 
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve("../client/build", "index.html"))
-  );
-
-  // append /api for our http requests
+  //append /api for our http requests
   app.use("/api", router);
-}
+
 
 
 // launch our backend into a port
