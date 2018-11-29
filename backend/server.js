@@ -95,8 +95,13 @@ router.post("/putData", (req, res) => {
 });
 
 
+  app.use(express.static('../client/build'));
   //append /api for our http requests
   app.use("/api", router);
+
+  app.get('*', (req, res) => {
+    res.sendFile('../client/build/index.html');
+  });
 
 
 
