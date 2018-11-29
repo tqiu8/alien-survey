@@ -5,6 +5,8 @@ body {
     overflow-x: hidden;
     font-family: 'Heebo', sans-serif;
     background-color: black;
+    color: white;
+    font-size: 14px;
 }
 
 h1 {
@@ -95,6 +97,8 @@ textarea {
     width: 10%;
     height: 22px;
     margin-right: 6px;
+    margin-top: 3px;
+    vertical-align: top;
     padding: 2px !important;
 }
 
@@ -134,7 +138,7 @@ textarea {
   from {
     opacity: 0;
     -webkit-transform: translate3d(0, 200%, 0);
-    transform: translate3d(0, 200%, 0);
+    transform: translate3d(0, 170%, 0);
   }
 
   to {
@@ -227,8 +231,25 @@ textarea {
 .final {
     animation-name: fadeInUpTitle;
     -webkit-animation-name: fadeInUpTitle;
+    animation-duration: 4s;
+    -webkit-animation-duration: 4s;
     margin: auto;
     text-align: left;
     padding: 300px;
+}
+
+.row {
+    display: block;
+    margin-top: 10px;
+}
+
+.button-column {
+    display: inline;
+    width: 12%;
+}
+
+.text-column {
+    display: inline-block;
+    width: 80%;
 }
 

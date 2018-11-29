@@ -54,6 +54,11 @@ class App extends Component {
       let interval = setInterval(this.getDataFromDb, 1000);
       this.setState({ intervalIsSet: interval });
     }
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   // never let a process live forever 
@@ -168,6 +173,10 @@ class App extends Component {
     this.setState({next: true})
   }
 
+  scrollToBottom = () => {
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+  } 
+
 
   // here is our UI
   // it is easy to understand their functions when you 
@@ -192,6 +201,7 @@ class App extends Component {
                 />
                 <br/>
               </div>
+
               { this.state.aliens? 
                 <div className="element box">
                   <h2>Do you believe in aliens?</h2>
@@ -219,125 +229,148 @@ class App extends Component {
                   </textarea>
                 </div>
               : null}
+
               { this.state.no? 
 
                 <div className="element box">
-                <h2>then do you believe we are all alone in the universe?</h2>
-                <textarea 
-                  className="long-answer"
-                  onKeyPress={e => this.submitAnswer(e)}
-                  >
-                  </textarea>
+                  <h2>then do you believe we are all alone in the universe?</h2>
+                  <textarea 
+                    className="long-answer"
+                    onKeyPress={e => this.submitAnswer(e)}
+                    >
+                    </textarea>
                 </div>
               : null}
+
               {this.state.answer != null?
                 <div className="right-element box">
                   <p>the Drake equation is a probabilistic argument used to estimate the number of active, communicative extraterrestrial civilizations 
                   in the Milky Way galaxy. the equation summarizes the main concepts which scientists must contemplate when considering the question 
                   of other radio-communicative life.</p>
+
                   {this.state.p1? null :
-                  <button className="button"
-                  onClick={() => this.setState({p1: true})} > next </button> }
+                    <button className="button"
+                    onClick={() => this.setState({p1: true})} > next </button> }
+
                 </div> 
-                :null}
+              :null}
 
                 {this.state.p1?
-                  <div>
-                    <div className="q right-element box ">
+                  <div className='right-element'>
+                    <div className="q box">
                       <h2>write your own version of the drake equation</h2>
                     </div>
-                    <div className= "q box right-element">
+                    <div className= "q box">
                       <p>instead, let us examine our own lives. compose a drake equation for the people in your life (estimate numbers that you're
-                    unsure about).</p>
-                      </div>
+                    unsure about)</p></div>
                 
-                    <div className="right-element">
-                      <ul>
-                        <li><i>R</i> = the number of people you meet, walk by, make eye contact with per year (ex 10000)</li>
-                        <li><i>f<sub>p</sub></i> = the fraction of those people who would actually cross your mind (ex 0.005)  </li>
-                        <li><i>N<sub>e</sub></i> = the fraction of those people you would make contact with (ex 0.002)</li>
-                        <li><i>f<sub>l</sub></i> = the fraction of those people you actually like (ex 0.005)</li>
-                        <li><i>f<sub>i</sub></i> = the fraction of those people who actually like you back (ex 0.8)</li>
-                        <li><i>f<sub>c</sub></i> = the fraction of those people worth devoting your time to (ex 0.9)</li>
-                        <li><i>L</i> = how many years you hope your relationships last (ex 40)</li>
-                      </ul>
-                    
-                    {this.state.p2? null
-                      : <button className="button"
-                      onClick={() => this.setState({p2: true})}> next </button>}
-                      </div>
-                    </div>
-                  : null}
-                {this.state.p2? 
-                  <div>
-                    <div className="right-element">
-                      <input
-                        className = "drake button"
+                      <div className='row'>
+                        <input
+                        className = "drake button button-column"
+                        style= {{borderColor: "#dc4848"}}
                         type="text"
-                        placeholder='R'
-                        onChange={e => this.setState({R: e.target.value})}
-                      /> 
-                      <input
-                        className = "button drake"
+                        placeholder="10000"
+                        onChange={e => this.setState({R: e.target.value})} 
+                      />
+                        <div className='text-column'>
+                          the number of people you walk by, make eye contact with per year<br/>
+                        </div></div>
+
+                      <div className="row">
+                        <input
+                        className = "button drake button-column"
+                        style= {{borderColor: "#faf15f"}}
                         type="text"
-                        placeholder='fp'
+                        placeholder='0.00002'
                         onChange={e => this.setState({fp: e.target.value})}
                       /> 
-                      <input
-                        className = "button drake"
+                      <div className='text-column'>
+                        the fraction of those people who would actually cross your mind<br/></div></div>
+
+                      <div className="row">
+                        <input
+                        className = "button drake button-column"
+                        style= {{borderColor: "#68d051"}}
                         type="text"
-                        placeholder='Ne'
+                        placeholder='0.002'
                         onChange={e => this.setState({Ne: e.target.value})}
                       /> 
-                      <input
-                        className = "button drake"
+                      <div className="text-column">
+                        the fraction of the people who cross your mind with whom you would make contact<br/></div></div>
+
+                      <div className="row">
+                        <input
+                        className = "button drake button-column"
+                        style= {{borderColor: "#51d3e6"}}
                         type="text"
-                        placeholder='fl'
+                        placeholder='0.001'
                         onChange={e => this.setState({fl: e.target.value})}
-                      />
-                      <input
-                        className = "button drake"
+                      /> 
+                      <div className="text-column">
+                        the fraction of the people with whom you've made contact you actually like <br/>
+                      </div></div>
+
+                      <div className="row">
+                        <input
+                        className = "button drake button-column"
+                        style = {{borderColor: "#3e47a8"}}
                         type="text"
-                        placeholder='fi'
+                        placeholder='0.8'
                         onChange={e => this.setState({fi: e.target.value})}
                       />
-                      <input
-                        className = "button drake"
+                      <div className="text-column"> 
+                        the fraction of the people you actually like who actually like you back<br/>
+                      </div></div>
+
+                      <div className="row">
+                        <input
+                        className = "button drake button-column"
+                        style= {{borderColor: "#9242c9"}}
                         type="text"
-                        placeholder='fc'
+                        placeholder='0.9'
                         onChange={e => this.setState({fc: e.target.value})}
                       />
-                      <input
-                        className = "button drake"
+                      <div className="text-column">
+                        the fraction of the people who also like you back who are worth devoting your time to<br/>
+                      </div></div>
+
+                      <div className="row">
+                        <input
+                        className = "button drake button-column"
+                        style= {{borderColor: "#c9258d"}}
                         type="text"
-                        placeholder='L'
+                        placeholder='60'
                         onKeyPress={e => this.calculateDrake(e)}
-                      />
+                        /> 
+                      <div className="text-column">
+                        how many years you hope your relationships last<br/></div></div>   
                     </div>
-                  </div>
-                :null}
-                <div className="q">
+                  :null}                 
+
+
               {this.state.final? 
                 <div className="element">
-                <h2>the number of people who will make an impact on your life is</h2>
-                <h2>{N}</h2>
-                <button className="button" onClick = {() => this.submit(this.state.name, this.state.yes, this.state.no, 
-                                                                              this.state.answer, this.state.R, this.state.fp,
-                                                                              this.state.Ne, this.state.fl, this.state.fi,
-                                                                              this.state.fc, this.state.L, this.state.N)}>submit</button> 
-                </div>
+                  <h2>the number of people who will make an impact on your life is</h2>
+                  <h2>{N}</h2>
+                  <button className="button" onClick = {() => this.submit(this.state.name, this.state.yes, this.state.no, 
+                                                                                this.state.answer, this.state.R, this.state.fp,
+                                                                                this.state.Ne, this.state.fl, this.state.fi,
+                                                                                this.state.fc, this.state.L, this.state.N)}>submit</button> 
+                  </div>
                 : null}
 
             
           </div>
-          </div>
 
-          
+          <div style={{ float:"left", clear: "both" }}
+             ref={(el) => { this.messagesEnd = el; }}>
+          </div>
       </div>
       );
+
       const nextPage = (
         <div className="next">
-          <div className="final slow">
+          <div className="final">
             <h2>there are probably aliens out there. 
               <br /> or we could also be all alone, although sometimes we may feel that way regardless of their
               existence. 
