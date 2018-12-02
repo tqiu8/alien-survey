@@ -244,9 +244,8 @@ class App extends Component {
 
               {this.state.answer != null?
                 <div className="right-element box">
-                  <p>the Drake equation is a probabilistic argument used to estimate the number of active, communicative extraterrestrial civilizations 
-                  in the Milky Way galaxy. the equation summarizes the main concepts which scientists must contemplate when considering the question 
-                  of other radio-communicative life.</p>
+                  <p>the Drake equation is a way for scientists to estimate the number of active alien civilizations in the milky way galaxy. the equation uses 
+                  the main concepts which scientists must think about when considering the question of other life.</p>
 
                   {this.state.p1? null :
                     <button className="button"
