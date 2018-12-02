@@ -373,8 +373,8 @@ class App extends Component {
             <h2>there are probably aliens out there. 
               <br /> or we could also be all alone, although sometimes we may feel that way regardless of their
               existence. 
-              <br />but all we really know is that here we are: pale and imperfect stars in our own universe, colliding out of loneliness. 
-              the sun is falling somewhere, and at the very end, from this seismic indecision arises what has been here all along. 
+              <br />but all we really know is that here we are: <br/> pale and imperfect stars in our own universe, colliding out of loneliness. 
+              <br/>the sun is falling somewhere, and at the very end, from this seismic indecision <br/>arises what has been here all along. 
               </h2>
           </div>
           <div style={{ float:"left", clear: "both" }}
