@@ -318,7 +318,7 @@ class App extends Component {
                         onChange={e => this.setState({fi: e.target.value})}
                       />
                       <div className="text-column"> 
-                        the fraction of the people you actually like who actually like you back<br/>
+                        the fraction of the people you like who actually like you back<br/>
                       </div></div>
 
                       <div className="row">
