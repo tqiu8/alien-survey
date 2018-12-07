@@ -42,7 +42,7 @@ class App extends Component {
       let interval = setInterval(this.getDataFromDb, 1000);
       this.setState({ intervalIsSet: interval });
     }
-    if (this.state.next){
+    if (this.state.next and this.isMobileDevice()){
       this.scrollToBottom();
     }
   }
@@ -166,6 +166,10 @@ class App extends Component {
   scrollToBottom = () => {
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   } 
+
+  isMobileDevice = () => {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+  };
 
 
   // here is our UI
