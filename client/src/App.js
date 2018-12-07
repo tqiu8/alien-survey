@@ -3,18 +3,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.css"
 
-const globalState = {
-  yes: false,
-  no: false,
-  r: null,
-  fp: null,
-  ne: null,
-  fl: null,
-  fi: null,
-  fc: null,
-  L: null
-}
-
 class App extends Component {
   // initialize our state 
   state = {
@@ -54,7 +42,9 @@ class App extends Component {
       let interval = setInterval(this.getDataFromDb, 1000);
       this.setState({ intervalIsSet: interval });
     }
-    this.scrollToBottom();
+    if (this.state.next){
+      this.scrollToBottom();
+    }
   }
 
   componentDidUpdate() {
@@ -163,7 +153,7 @@ class App extends Component {
       this.setState({L: eval(e.target.value), R: eval(this.state.R), fp: eval(this.state.fp), 
                     Ne: eval(this.state.Ne), fl: eval(this.state.fl), fi: eval(this.state.fi),
                     fc: eval(this.state.fc)})
-      var final = this.state.R * this.state.fp * this.state.Ne * this.state.fl * this.state.fi * this.state.fc * e.target.value
+      var final = this.state.R * this.state.fp * this.state.Ne * this.state.fl * this.state.fi * this.state.fc * e.target.value * 100
       this.setState({N: final, final: true})
     }
   }
