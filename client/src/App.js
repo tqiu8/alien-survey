@@ -153,7 +153,7 @@ class App extends Component {
       this.setState({L: eval(e.target.value), R: eval(this.state.R), fp: eval(this.state.fp), 
                     Ne: eval(this.state.Ne), fl: eval(this.state.fl), fi: eval(this.state.fi),
                     fc: eval(this.state.fc)})
-      var final = this.state.R * this.state.fp * this.state.Ne * this.state.fl * this.state.fi * this.state.fc * e.target.value * 100
+      var final = this.state.R * this.state.fp * this.state.Ne * this.state.fl * this.state.fi * this.state.fc * e.target.value * 10
       this.setState({N: final, final: true})
     }
   }
