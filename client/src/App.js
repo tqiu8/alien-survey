@@ -43,7 +43,7 @@ class App extends Component {
       let interval = setInterval(this.getDataFromDb, 1000);
       this.setState({ intervalIsSet: interval });
     }
-    if (this.state.next && !this.isMobile){
+    if (this.state.next && isMobile){
       this.scrollToBottom();
     }
   }
