@@ -1,5 +1,6 @@
 // /client/App.js
 import React, { Component } from "react";
+import {isMobile} from "react-device-detect";
 import axios from "axios";
 import "./App.css"
 
@@ -42,7 +43,7 @@ class App extends Component {
       let interval = setInterval(this.getDataFromDb, 1000);
       this.setState({ intervalIsSet: interval });
     }
-    if (this.state.next and this.isMobileDevice()){
+    if (this.state.next && !this.isMobile){
       this.scrollToBottom();
     }
   }
@@ -167,9 +168,6 @@ class App extends Component {
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   } 
 
-  isMobileDevice = () => {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-  };
 
 
   // here is our UI
